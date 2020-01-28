@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { SearchType } from 'src/app/models/search-type.model';
+import { SearchType } from './models/search-type.model';
 import { Parking } from './models/parking.model';
 import { Poi } from './models/poi.model';
 import { Vehicle } from './models/vehicle.model';

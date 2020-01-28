@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { SearchType } from 'src/app/models/search-type.model';
+import { SearchType } from '../../../models/search-type.model';
 
 @Component({
   selector: 'app-marker-modal',

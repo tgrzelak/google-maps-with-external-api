@@ -1,5 +1,5 @@
-import { SearchType } from 'src/app/models/search-type.model';
-import { Search } from 'src/app/models/search.model';
+import { Search } from '../../models/search.model';
+import { SearchType } from '../../models/search-type.model';
 
 export const SEARCH_TYPES: Search[] = [
   { value: SearchType.VEHICLE },
