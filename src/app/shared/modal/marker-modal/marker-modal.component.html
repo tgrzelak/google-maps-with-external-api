@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>{{data.name}}</h1>
+<div [ngSwitch]="data.discriminator">
+  <div *ngSwitchCase="(type.VEHICLE).toLowerCase()">
+    <div mat-dialog-content>
+      <p><b>Name:</b> {{data.name}}</p>
+      <p><b>Plates Number:</b> {{data.platesNumber}}</p>
+      <p><b>Side Number:</b> {{data.sideNumber}}</p>
+      <p><b>Range Kilometers:</b> {{data.rangeKm}}</p>
+      <p><b>Battery Level:</b> {{data.batteryLevelPct}}%</p>
+      <p><b>Color:</b> {{data.color}}</p>
+      <p><b>Status:</b> {{data.status}}</p>
+      <p *ngIf="data.address"><b>Address:</b> {{data.address}}</p>
+    </div>
+  </div>
+  <div *ngSwitchCase="(type.POI).toLowerCase()">
+    <div mat-dialog-content>
+      <p><b>Name:</b> {{data.name}}</p>
+      <p><b>Description:</b> {{data.description}}</p>
+      <p><b>Category:</b> {{data.category}}</p>
+      <p><b>Address:</b> {{data.address.street}} {{data.address.house}} {{data.address.city}}</p>
+    </div>
+  </div>
+  <div *ngSwitchCase="(type.PARKING).toLowerCase()">
+    <div mat-dialog-content>
+      <p><b>Name:</b> {{data.name}}</p>
+      <p><b>Description:</b> {{data.description}}</p>
+      <p><b>Spaces:</b> {{data.spacesCount}}</p>
+      <p><b>Available Spaces:</b> {{data.availableSpacesCount}}</p>
+      <p><b>Address:</b> {{data.address.street}} {{data.address.house}} {{data.address.city}}</p>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Close</button>
+</div>

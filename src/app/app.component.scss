@@ -1,0 +1,35 @@
+$tablets-and-up: 786px;
+
+.title {
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: 700;
+  padding: 25px 10%;
+}
+
+.container {
+  @media (min-width: $tablets-and-up) {
+    display: flex;
+  }
+  .map {
+    height: 500px;
+    width: 100%;
+  }
+
+  .nav {
+    padding: 50px 10%;
+    @media (min-width: $tablets-and-up) {
+      width: 40%;
+    }
+    &__item {
+      display: block;
+    }
+  }
+  .slider {
+    margin-top: 20px;
+    &__input {
+      margin-top: 17px;
+    }
+  }
+}

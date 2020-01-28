@@ -1,0 +1,65 @@
+<header class="title">Google Maps with External Api</header>
+
+<div class="container">
+  <nav class="nav">
+    <mat-form-field class="nav__item">
+      <mat-label>What are you looking for?</mat-label>
+      <mat-select [(value)]="selectedValue" (selectionChange)="onChange($event)">
+        <mat-option *ngFor="let searchType of searchTypes" [value]="searchType.value">
+          {{searchType.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div *ngIf="selectedValue === type.VEHICLE">
+      <mat-form-field class="nav__item">
+        <mat-label>Select type of vehicle</mat-label>
+        <mat-select (selectionChange)="onVehicleTypeChange($event)">
+          <mat-option *ngFor="let vehicleType of vehicleTypes" [value]="vehicleType">
+            {{vehicleType}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="slider">
+        <label>Procentage battery level</label>
+        <mat-slider class="nav__item slider__input" thumbLabel (change)="onSliderChange($event)" min="0" max="100" step="1">
+        </mat-slider>
+      </div>
+    </div>
+
+    <div *ngIf="selectedValue === type.POI">
+      <mat-form-field class="nav__item">
+        <mat-label>Select category</mat-label>
+        <mat-select (selectionChange)="onPoiCategoryChange($event)">
+          <mat-option *ngFor="let poiCategory of poiCategories" [value]="poiCategory">
+            {{poiCategory}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </nav>
+
+
+  <agm-map
+    class="map"
+    [latitude]="MAP_CONFIG.centerLat"
+    [longitude]="MAP_CONFIG.centerLng"
+    [zoom]="MAP_CONFIG.zoom"
+    [disableDefaultUI]="false"
+    [zoomControl]="true">
+
+    <agm-marker-cluster
+      imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+
+      <agm-marker *ngFor="let marker of markers; let i = index"
+        [latitude]="marker.location.latitude"
+        [opacity]="setOpacityBaseOnStatus(marker.id)"
+        [longitude]="marker.location.longitude"
+        (markerClick)="openMarkerModal(marker.id)">
+      </agm-marker>
+
+    </agm-marker-cluster>
+  </agm-map>
+
+</div>
